@@ -6,8 +6,14 @@ Validator({
   errorSelector: '.form-message',
   rules: [
     isRequired('#fullname'),
+    isRequired('#email'),
     isEmail('#email'),
+    isRequired('#password'),
     isPassword('#password', 6),
-    isPasswordConfirm('#password_confirmation')
+    isRequired('#password_confirmation'),
+    isPasswordConfirm('#password_confirmation', () => {
+      return document.querySelector('#form-1 #password').value;
+    }, 6, 'Mật khẩu không chính xác!'),
+
   ]
 });
