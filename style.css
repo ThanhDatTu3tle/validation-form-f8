@@ -116,6 +116,10 @@ html {
   flex-direction: row;
   margin: 0px 0px 0px 30px;
 }
+
+.options.favorite {
+  margin: 0px 0px 0px 0px;
+}
   
 .male {
   display: flex;
