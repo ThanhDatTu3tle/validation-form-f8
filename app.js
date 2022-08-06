@@ -76,8 +76,23 @@ export function Validator(options) {
           var formValues = Array.from(enableInputs).reduce((values, input) => {
             switch(input.type) {
               case 'radio':
-              case 'checkbox':  
                 values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
+                break;
+              case 'checkbox':  
+                if (!input.matches(':checked')) {
+                  values[input.name] = '';
+                  return values;
+                }
+                  
+                if (!Array.isArray(values[input.name])) {
+                  values[input.name] = [];
+                }
+
+                values[input.name].push(input.value);
+
+                break;
+              case 'file':
+                values[input.name] = input.files;
                 break;
               default:
                 values[input.name] = input.value;
@@ -109,6 +124,11 @@ export function Validator(options) {
       Array.from(inputElements).forEach((inputElement) => {
         // xử lý trường hợp blur khỏi input
         inputElement.onblur = () => {
+          validate(inputElement, rule);
+        }
+
+        // xử lý trường hợp change trên input
+        inputElement.onchange = () => {
           validate(inputElement, rule);
         }
 

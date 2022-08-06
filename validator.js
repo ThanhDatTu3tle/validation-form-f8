@@ -10,6 +10,7 @@ Validator({
     isRequired('#email'),
     isEmail('#email'),
     isRequired('input[name="gender"]'),
+    isRequired('#province'),
     isRequired('#password'),
     isPassword('#password', 6),
     isRequired('#password_confirmation'),
