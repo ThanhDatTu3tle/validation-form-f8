@@ -12,7 +12,7 @@ Validator({
     isRequired('input[name="gender"]'),
     isRequired('input[name="favorite"]'),
     isRequired('#province'),
-    isRequired('#avatar'),
+    // isRequired('#avatar'),
     isRequired('#password'),
     isPassword('#password', 6),
     isRequired('#password_confirmation'),
